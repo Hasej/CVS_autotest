@@ -11,7 +11,8 @@ def test_reset_password_page_appear(browser):
     link = "https://stagingv2-cvs.instantcard.net/login"
     page = LoginPage(browser, link)
     page.open()
-    reset_page = page.go_to_reset_page()
+    page.go_to_reset_page()
+    reset_page = ResetPasswordPage(browser, browser.current_url)
     reset_page.should_be_correct_reset_password_page()
 
 

@@ -1,7 +1,7 @@
-from .login_page import LoginPage
+from .base_page import BasePage
 from .locators import ResetPasswordLocators
 
-class ResetPasswordPage(LoginPage):
+class ResetPasswordPage(BasePage):
 
     def should_be_correct_reset_password_page(self):
         self.should_be_reset_password_url()

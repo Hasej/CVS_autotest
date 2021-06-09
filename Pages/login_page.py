@@ -52,5 +52,5 @@ class LoginPage(BasePage):
     def go_to_reset_page(self):
         link = self.browser.find_element(*LoginPageLocators.FORGOT_PASSWORD)
         link.click()
-        return ResetPasswordPage(browser=self.browser, url=self.browser.current_url)
+        #return ResetPasswordPage(browser=self.browser, url=self.browser.current_url)
 
