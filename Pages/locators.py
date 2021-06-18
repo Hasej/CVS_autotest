@@ -9,6 +9,7 @@ class LoginPageLocators():
     NOT_REGISTERED_BLOCK = (By.CSS_SELECTOR, "p>a")
     FORGOT_PASSWORD = (By.CSS_SELECTOR, "#login>a")
     LOGIN_BUTTON = (By.ID, "user_submit_action")
+    SUCCESS_MESSAGE = (By.CLASS_NAME, "flash_notice")
 
 class ResetPasswordLocators():
     RESET_EMAIL_FIELD = (By.ID, "user_email")

@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import ResetPasswordLocators
+from .locators import LoginPageLocators
 
 class ResetPasswordPage(BasePage):
 
@@ -50,3 +51,18 @@ class ResetPasswordPage(BasePage):
         error_message2 = self.browser.find_element(*ResetPasswordLocators.INLINE_ERRORS)
         error_text2 = error_message2.text
         assert error_text2 == "not found", "Incorrect error message when email incorrect"
+
+    def should_be_success_reset_password(self):
+        email_input = self.browser.find_element(*ResetPasswordLocators.RESET_EMAIL_FIELD)
+        email_input.send_keys("shevtsov.t@gmail.com")
+
+        button2 = self.browser.find_element(*ResetPasswordLocators.RESET_PASSWORD_BUTTON)
+        button2.click()
+
+
+    def should_be_correct_success_page(self):
+        assert "login" in self.browser.current_url, "Navigated to incorrect link after restore password"
+
+        success_message = self.browser.find_element(*LoginPageLocators.SUCCESS_MESSAGE)
+        success_text = success_message.text
+        assert "You will receive an email with instructions about how to reset your password in a few minutes." == success_text, "Success message text incorrect"
