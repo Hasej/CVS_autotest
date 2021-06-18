@@ -28,3 +28,25 @@ class ResetPasswordPage(BasePage):
         assert self.is_element_present(*ResetPasswordLocators.SIGN_IN_BUTTON), "Sign in button missed on reset password page"
 
 
+    def should_be_error_message_when_email_empty(self):
+        button1= self.browser.find_element(*ResetPasswordLocators.RESET_PASSWORD_BUTTON)
+        button1.click()
+
+        assert self.is_element_present(*ResetPasswordLocators.VALIDATION_ERROR_MESSAGE), "Validation errors block not appear"
+
+        error_message1 = self.browser.find_element(*ResetPasswordLocators.INLINE_ERRORS)
+        error_text1 = error_message1.text
+        assert error_text1 == "can't be blank", "Incorrect error message when email field empty"
+
+    def should_be_error_message_when_email_incorrect(self):
+        email_input=self.browser.find_element(*ResetPasswordLocators.RESET_EMAIL_FIELD)
+        email_input.send_keys("test")
+
+        button2= self.browser.find_element(*ResetPasswordLocators.RESET_PASSWORD_BUTTON)
+        button2.click()
+
+        assert self.is_element_present(*ResetPasswordLocators.VALIDATION_ERROR_MESSAGE), "Validation errors block not appear"
+
+        error_message2 = self.browser.find_element(*ResetPasswordLocators.INLINE_ERRORS)
+        error_text2 = error_message2.text
+        assert error_text2 == "not found", "Incorrect error message when email incorrect"

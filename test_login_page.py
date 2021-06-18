@@ -16,4 +16,9 @@ def test_reset_password_page_appear(browser):
     reset_page.should_be_correct_reset_password_page()
 
 
-
+def test_validation_errors(browser):
+    link = "https://stagingv2-cvs.instantcard.net/password/new"
+    page = ResetPasswordPage(browser, link)
+    page.open()
+    page.should_be_error_message_when_email_empty()
+    page.should_be_error_message_when_email_incorrect()

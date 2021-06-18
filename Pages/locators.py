@@ -15,3 +15,5 @@ class ResetPasswordLocators():
     RESET_EMAIL_FIELD_LABEL = (By.CSS_SELECTOR, ".email.input .label")
     RESET_PASSWORD_BUTTON = (By.ID, "user_submit_action")
     SIGN_IN_BUTTON = (By.CSS_SELECTOR, "#login>a")
+    VALIDATION_ERROR_MESSAGE = (By.ID, "error_explanation")
+    INLINE_ERRORS = (By.CLASS_NAME, "inline-errors")
