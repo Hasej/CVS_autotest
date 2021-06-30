@@ -54,3 +54,54 @@ class LoginPage(BasePage):
         link.click()
         #return ResetPasswordPage(browser=self.browser, url=self.browser.current_url)
 
+    def should_be_error_when_email_and_pass_empty(self):
+        login_button = self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON)
+        login_button.click()
+        assert self.is_element_present(*LoginPageLocators.LOGIN_ERROR_MESSAGE), "Error message not appear"
+
+        error_message = self.browser.find_element(*LoginPageLocators.LOGIN_ERROR_MESSAGE)
+        error_message_text = error_message.text
+        assert "Invalid email or password." == error_message_text, "Incorrect Login error message appear"
+
+    def should_be_error_when_pass_empty(self):
+
+        email_text = self.browser.find_element(*LoginPageLocators.EMAIL_FIELD)
+        email_text.clear()
+        email_text.send_keys("mharrison@ralstonbuilders.com")
+        login_button = self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON)
+        login_button.click()
+        assert self.is_element_present(*LoginPageLocators.LOGIN_ERROR_MESSAGE), "Error message not appear"
+
+        error_message = self.browser.find_element(*LoginPageLocators.LOGIN_ERROR_MESSAGE)
+        error_message_text = error_message.text
+        assert "Invalid email or password." == error_message_text, "Incorrect Login error message appear"
+
+    def should_be_error_when_pass_incorrect(self):
+
+        email_text = self.browser.find_element(*LoginPageLocators.EMAIL_FIELD)
+        email_text.clear()
+        email_text.send_keys("mharrison@ralstonbuilders.com")
+        password_text = self.browser.find_element(*LoginPageLocators.PASSWORD_FIELD)
+        password_text.clear()
+        password_text.send_keys("123")
+        login_button = self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON)
+        login_button.click()
+        assert self.is_element_present(*LoginPageLocators.LOGIN_ERROR_MESSAGE), "Error message not appear"
+
+        error_message = self.browser.find_element(*LoginPageLocators.LOGIN_ERROR_MESSAGE)
+        error_message_text = error_message.text
+        assert "Invalid email or password." == error_message_text, "Incorrect Login error message appear"
+
+    def should_be_logged_in_with_correct_credentials(self):
+
+        email_text = self.browser.find_element(*LoginPageLocators.EMAIL_FIELD)
+        email_text.clear()
+        email_text.send_keys("mharrison@ralstonbuilders.com")
+        password_text = self.browser.find_element(*LoginPageLocators.PASSWORD_FIELD)
+        password_text.clear()
+        password_text.send_keys("mharrison")
+        login_button = self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON)
+        login_button.click()
+        assert self.is_not_element_present(*LoginPageLocators.LOGIN_ERROR_MESSAGE), "Error message not appear"
+        assert "https://stagingv2-cvs.instantcard.net/"== self.browser.current_url, "User not logged in"
+

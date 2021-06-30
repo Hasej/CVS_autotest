@@ -66,3 +66,8 @@ class ResetPasswordPage(BasePage):
         success_message = self.browser.find_element(*LoginPageLocators.SUCCESS_MESSAGE)
         success_text = success_message.text
         assert "You will receive an email with instructions about how to reset your password in a few minutes." == success_text, "Success message text incorrect"
+
+    def should_naviagate_to_login_page_when_click_signin(self):
+        button3 = self.browser.find_element(*ResetPasswordLocators.SIGN_IN_BUTTON)
+        button3.click()
+        assert "login" in self.browser.current_url, "Navigated to incorrect link after click Sign in on restore password"
