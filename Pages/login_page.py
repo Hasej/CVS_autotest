@@ -102,6 +102,7 @@ class LoginPage(BasePage):
         password_text.send_keys("mharrison")
         login_button = self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON)
         login_button.click()
+        assert self.is_element_present(*LoginPageLocators.SUCCESS_MESSAGE), "Success message not appear"
         assert self.is_not_element_present(*LoginPageLocators.LOGIN_ERROR_MESSAGE), "Error message not appear"
         assert "https://stagingv2-cvs.instantcard.net/"== self.browser.current_url, "User not logged in"
 

@@ -19,3 +19,25 @@ class ResetPasswordLocators():
     SIGN_IN_BUTTON = (By.CSS_SELECTOR, "#login>a")
     VALIDATION_ERROR_MESSAGE = (By.ID, "error_explanation")
     INLINE_ERRORS = (By.CLASS_NAME, "inline-errors")
+
+class BasePageLocators():
+    HEADER_LOGO_IMAGE = (By.ID, "site_title_image")
+    HEADER_COMPANY_BUTTON = (By.ID, "company_page")
+    HEADER_EMPLOYEE_BUTTON = (By.ID, "users")
+    HEADER_CREDENTIALS_BUTTON = (By.ID, "credentials")
+    HEADER_CREDENTIAL_SECTIONS_BUTTON = (By.ID, "credential_sections")
+    HEADER_QUALIFICATIONS_BUTTON = (By.ID, "qualifications")
+    HEADER_DOCUMENTS_BUTTON = (By.ID, "documents")
+    HEADER_INFO_TABLE_BUTTON = (By.ID, "info_tables")
+    HEADER_EQUIPMENT_BUTTON = (By.ID, "equipment")
+    HEADER_LOG_REPORTS_BUTTON = (By.ID, "log_reports")
+    HEADER_LOGGING_ENTITIES = (By.ID, "logging_entities")
+    HEADER_REPORTS_BUTTON = (By.ID, "reports")
+    HEADER_SCHEDULED_REPORTS_BUTTON = (By.ID, "scheduled_reports")
+    HEADER_CURRENT_USER_BUTTON = (By.ID, "current_user")
+    HEADER_LOGOUT_BUTTON = (By.ID, "logout")
+    PAGE_TITLE = (By.ID, "page_title")
+    ACTION_BUTTON1 = (By.CLASS_NAME, ".action_item>a")
+    ACTION_BUTTON2 = (By.CSS_SELECTOR, ".action_items:nth-child(2)>a")
+    
+
